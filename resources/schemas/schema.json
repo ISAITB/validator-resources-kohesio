@@ -1,0 +1,71 @@
+{
+    "fields": [
+      {
+        "name": "ID",
+        "title": "ID",
+        "type": "integer",
+        "description": "A unique national identifier for the project",
+        "constraints": {
+          "minimum": 5,
+          "required": true,
+          "unique": true
+        }
+      },{
+        "name": "country",
+        "title": "country",
+        "type": "string",
+        "description": "Country of the project",
+        "constraints": {
+          "enum": ["France", "Belgium", "Greece"]
+        }
+      },{
+        "name": "title",
+        "title": "title",
+        "type": "string",
+        "description": "Title of the project in the local language",
+        "constraints": {
+          "pattern": ".*AAA.*"
+        }
+      },{
+        "name": "title_en",
+        "title": "title_en",
+        "type": "string",
+        "description": "Title of the project in english"
+      },{
+        "name": "summary",
+        "title": "summary",
+        "type": "string",
+        "description": "Summary/Description of the project in local language"
+      },{
+        "name": "summary_en",
+        "title": "summary_en",
+        "type": "string",
+        "description": "Summary/Description of the project in local language"
+      },{
+        "name": "start_date",
+        "title": "start_date",
+        "type": "date",
+        "format": "%d-%m-%Y",
+        "description": "Date when the project will start or started"
+      },{
+        "name": "end_date",
+        "title": "end_date",
+        "type": "date",
+        "format": "%d-%m-%Y",
+        "description": "Date when the project will end or ended",
+        "constraints": {
+          "minimum": "01-01-1990"
+        }
+      },{
+        "name": "budget",
+        "title": "budget",
+        "type": "number",
+        "description": "Total budget of the project",
+        "constraints": {
+          "minimum": 15000.50,
+          "maximum": 25000
+        }
+      }
+    ],
+    "primaryKey": "ID"
+  }
