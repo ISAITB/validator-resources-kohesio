@@ -1,6 +1,7 @@
-# CSV Validator for Kohesio
+# CSV Validator configuration for Kohesio
 
-CSV validator instance that is configured with the Table Schema for Kohesio.
+Configuration for a CSV validator instance for Kohesio. Validation is done by means of Table Schema which is 
+currently defined in this repository. For details on the validator's configuration check file `resources/config.properties`.
 
 To publish changes commit and push your updates. In 1-2 minutes the online service will be updated.
 
