@@ -1,71 +1,282 @@
 {
-    "fields": [
-      {
-        "name": "ID",
-        "title": "ID",
-        "type": "integer",
-        "description": "A unique national identifier for the project",
-        "constraints": {
-          "minimum": 5,
-          "required": true,
-          "unique": true
-        }
-      },{
-        "name": "country",
-        "title": "country",
-        "type": "string",
-        "description": "Country of the project",
-        "constraints": {
-          "enum": ["France", "Belgium", "Greece", "Denmark"]
-        }
-      },{
-        "name": "title",
-        "title": "title",
-        "type": "string",
-        "description": "Title of the project in the local language",
-        "constraints": {
-          "pattern": ".*AAA.*"
-        }
-      },{
-        "name": "title_en",
-        "title": "title_en",
-        "type": "string",
-        "description": "Title of the project in english"
-      },{
-        "name": "summary",
-        "title": "summary",
-        "type": "string",
-        "description": "Summary/Description of the project in local language"
-      },{
-        "name": "summary_en",
-        "title": "summary_en",
-        "type": "string",
-        "description": "Summary/Description of the project in local language"
-      },{
-        "name": "start_date",
-        "title": "start_date",
-        "type": "date",
-        "format": "d/M/yyyy",
-        "description": "Date when the project will start or started"
-      },{
-        "name": "end_date",
-        "title": "end_date",
-        "type": "date",
-        "format": "d/M/yyyy",
-        "description": "Date when the project will end or ended",
-        "constraints": {
-          "minimum": "1/1/1990"
-        }
-      },{
-        "name": "budget",
-        "title": "budget",
-        "type": "number",
-        "description": "Total budget of the project",
-        "constraints": {
-          "minimum": 15000.50,
-          "maximum": 25000
-        }
+  "fields" : [ 
+    {
+      "name" : "Operation_Unique_Identifier",
+      "title" : "operation unique identifier", 
+      "description" : "any unique ID", 
+      "type" : "string"
+    }, 
+    {
+    "name" : "CountryID", 
+    "title" : "Country ID",
+    "description" : "Country's ID for the programme",
+    "type" : "string"
+    },
+    {
+      "name" : "Operation_Name_Programme_Language", 
+      "title" : "operation name", 
+      "type" : "string",
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "Operation_Name_English", 
+      "title" : "operation name", 
+      "type" : "string"
+    },
+    {
+      "name" : "Country", 
+      "title" : "country",
+      "description" : "fixed value pre-filled by country",
+      "type" : "string",
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "Location_Indicator_Postcode", 
+      "title" : "location indicator postcode",
+      "description" : "the field corresponding to the programme address postcode",
+      "type" : "string" 
+    },
+    {
+      "name" : "Operation_Start_Date", 
+      "title" : "operation start date",
+      "description" : "the start date of the operation in DD/MM/YYYY",
+      "type" : "date",
+      "format" : "%d/%m/%Y",
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "Operation_Expected_End_Date", 
+      "title" : "operation expected end date",
+      "type" : "date",
+      "format" : "%d/%m/%Y"
+    },
+    {
+      "name" : "Operation_End_Date", 
+      "title" : "operation end date",
+      "type" : "date",
+      "format" : "%d/%m/%Y",
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "CoFinancing_Rate", 
+      "title" : "co-financing rate",
+      "type" : "number",
+      "bareNumber" : false,
+      "constraints" : {
+        "required": true,
+        "minimum": 0.0,
+        "maximum": 100.0
+      } 
+    },
+    {
+      "name" : "Total_Eligible_Expenditure_amount", 
+      "title" : "total eligible expenditure amount",
+      "type" : "number",
+      "constraints" : {
+        "required": true,
+        "minimum": 0.0
+      } 
+    },
+    {
+      "name" : "Total_Eligible_Expenditure_Currency", 
+      "title" : "total eligible expenditure currency",
+      "type" : "string",
+      "constraints" : {
+        "required": true,
+        "enum" : ["AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", 
+          "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUC", "CUP", 
+          "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP", 
+          "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", 
+          "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", 
+          "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", 
+          "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", 
+          "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SPL", "SRD", "STN", "SVC", "SYP", "SZL", "THB", "TJS", 
+          "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", 
+          "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWD"
+        ] 
+      } 
+    },
+    {
+      "name" : "Total_Eligible_Expenditure_Exchange_Rate", 
+      "title" : "total eligible expenditure exchange rate",
+      "type" : "number" 
+    },
+    {
+      "name" : "Location_Indicator_NUTS_code", 
+      "title" : "location indicator NUTS code",
+      "description" : "the field corresponding to the programme regional NUTS code",
+      "type" : "string" 
+    },
+    {
+      "name" : "Beneficiary_Name", 
+      "title" : "beneficiary name",
+      "description" : "anonymised if individual person name",
+      "type" : "string",
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "Location_Indicator_latitude_longitude", 
+      "title" : "location indicator geopoint",
+      "description" : "the field corresponding to the programme address geopoint object",
+      "type" : "geopoint" 
+    },
+    {
+      "name" : "Category_Of_Intervention", 
+      "title" : "category of intervention",
+      "type" : "number",
+      "constraints" : {
+        "required": true,
+        "minimum" : 1,
+        "maximum" : 123
+      } 
+    },
+    {
+      "name" : "Fund_Code", 
+      "title" : "fund code",
+      "type" : "string",
+      "constraints": {
+        "enum" : ["CF", "EAFRD", "EMFF", "ENI", "ERDF", "ESF", "YEI", "IPA II"] 
       }
-    ],
-    "primaryKey": "ID"
-  }
+    },
+    {
+      "name" : "Programme_Code", 
+      "title" : "programme code",
+      "type" : "string",
+      "constraints" : {
+        "enum" : ["2014ES16RFOP010", "2014ES16RFOP011", "2014ES16RFOP012", "2014ES16RFOP013", "2014ES16RFOP014", "2014ES16RFOP015", "2014ES16RFOP016", "2014ES16RFOP017", "2014ES16RFOP018", "2014ES16RFOP019", 
+            "2014ES16RFOP020", "2014ES16RFOP021", "2014ES16RFSM001", "2014FI05M2OP001", "2014FI16M2OP001", "2016FI16RFSM001", "2014FR05M0OP001", "2014FR05M2OP001", "2014FR05M9OP001", "2014FR05M9OP002", 
+            "2014FR05SFOP001", "2014FR05SFOP003", "2014FR05SFOP004", "2014FR05SFOP005", "2014FR16M0OP001", "2014FR16M0OP002", "2014FR16M0OP003", "2014FR16M0OP004", "2014FR16M0OP005", "2014FR16M0OP006", 
+            "2014FR16M0OP007", "2014FR16M0OP008", "2014FR16M0OP009", "2014FR16M0OP011", "2014FR16M0OP012", "2014FR16M0OP013", "2014FR16M0OP014", "2014FR16M0OP015", "2014FR16M2OP001", "2014FR16M2OP003", 
+            "2014FR16M2OP004", "2014FR16M2OP005", "2014FR16M2OP006", "2014FR16M2OP008", "2014FR16M2OP009", "2014FR16M2OP010", "2014FR16M2OP011", "2014FR16M2OP012", "2014FR16M2TA001", "2014FR16RFOP001", 
+            "2014FR16RFOP002", "2014FR16RFOP003", "2014FR16RFOP004", "2014FR16RFOP005", "2014FR16RFOP006", "2014FR16RFOP007", "2014GR05M2OP001", "2014GR05M9OP001", "2014GR16M1OP001", "2014GR16M2OP001", 
+            "2014GR16M2OP002", "2014GR16M2OP003", "2014GR16M2OP004", "2014GR16M2OP005", "2014GR16M2OP006", "2014GR16M2OP007", "2014GR16M2OP008", "2014GR16M2OP009", "2014GR16M2OP010", "2014GR16M2OP011", 
+            "2014GR16M2OP012", "2014GR16M2OP013", "2014GR16M2OP014", "2014HR05M9OP001", "2014HR16M1OP001", "2014HU05M2OP001", "2014HU05M3OP001", "2014HU16M0OP001", "2014HU16M1OP001", "2014HU16M1OP003", 
+            "2014HU16M2OP001", "2014HU16M2OP002", "2014IE05M9OP001", "2014IE16RFOP001", "2014IE16RFOP002", "2014IT05M2OP001", "2014IT05M2OP002", "2014IT05M9OP001", "2014IT05SFOP001", "2014IT05SFOP002", 
+            "2014IT05SFOP003", "2014IT05SFOP004", "2014AT05SFOP001", "2014AT16RFOP001", "2014BE05M9OP001", "2014BE05M9OP002", "2014BE05SFOP001", "2014BE05SFOP002", "2014BE16RFOP001", "2014BE16RFOP002", 
+            "2014BE16RFOP003", "2014BG05M2OP001", "2014BG05M9OP001", "2014BG05SFOP001", "2014BG16M1OP001", "2014BG16M1OP002", "2014BG16RFOP001", "2014BG16RFOP002", "2015BG16RFSM001", "2014CY05M9OP001", 
+            "2014CY16M1OP001", "2014CZ05M2OP001", "2014CZ05M9OP001", "2014CZ16CFTA001", "2014CZ16M1OP001", "2014CZ16M1OP002", "2014CZ16M2OP001", "2014CZ16RFOP001", "2014CZ16RFOP002", "2014DE05SFOP001", 
+            "2014DE05SFOP002", "2014DE05SFOP003", "2014DE05SFOP004", "2014DE05SFOP005", "2014DE05SFOP006", "2014DE05SFOP007", "2014DE05SFOP008", "2014DE05SFOP009", "2014DE05SFOP010", "2014DE05SFOP011", 
+            "2014DE05SFOP012", "2014DE05SFOP013", "2014DE05SFOP014", "2014DE05SFOP015", "2014DE05SFOP016", "2014DE16M2OP001", "2014DE16RFOP001", "2014DE16RFOP002", "2014DE16RFOP003", "2014DE16RFOP004", 
+            "2014DE16RFOP005", "2014DE16RFOP006", "2014DE16RFOP007", "2014DE16RFOP008", "2014DE16RFOP009", "2014DE16RFOP010", "2014DE16RFOP011", "2014DE16RFOP012", "2014DE16RFOP013", "2014DE16RFOP014", 
+            "2014DE16RFOP015", "2014DK05SFOP001", "2014DK16RFOP001", "2014EE16M3OP001", "2014ES05M9OP001", "2014ES05SFOP001", "2014ES05SFOP002", "2014ES05SFOP003", "2014ES05SFOP004", "2014ES05SFOP005", 
+            "2014ES05SFOP006", "2014ES05SFOP007", "2014ES05SFOP008", "2014ES05SFOP009", "2014ES05SFOP010", "2014ES05SFOP011", "2014ES05SFOP012", "2014ES05SFOP014", "2014ES05SFOP015", "2014ES05SFOP016", 
+            "2014ES05SFOP017", "2014ES05SFOP018", "2014ES05SFOP019", "2014ES05SFOP020", "2014ES05SFOP021", "2014ES05SFOP022", "2014ES05SFTA001", "2014ES16RFOP002", "2014ES16RFOP003", "2014ES16RFOP004", 
+            "2014ES16RFOP005", "2014ES16RFOP006", "2014ES16RFOP007", "2014ES16RFOP008", "2014ES16RFOP009", "2014IT05SFOP005", "2014IT05SFOP006", "2014IT05SFOP007", "2014IT05SFOP008", "2014IT05SFOP009", 
+            "2014IT05SFOP010", "2014IT05SFOP011", "2014IT05SFOP012", "2014IT05SFOP013", "2014IT05SFOP014", "2014IT05SFOP015", "2014IT05SFOP016", "2014IT05SFOP017", "2014IT05SFOP018", "2014IT05SFOP020", 
+            "2014IT05SFOP021", "2014IT16M2OP001", "2014IT16M2OP002", "2014IT16M2OP003", "2014IT16M2OP004", "2014IT16M2OP005", "2014IT16M2OP006", "2014IT16RFOP001", "2014IT16RFOP002", "2014IT16RFOP003", 
+            "2014IT16RFOP004", "2014IT16RFOP005", "2014IT16RFOP007", "2014IT16RFOP008", "2014IT16RFOP009", "2014IT16RFOP010", "2014IT16RFOP011", "2014IT16RFOP012", "2014IT16RFOP013", "2014IT16RFOP014", 
+            "2014IT16RFOP015", "2014IT16RFOP016", "2014IT16RFOP017", "2014IT16RFOP018", "2014IT16RFOP019", "2014IT16RFOP020", "2014IT16RFOP021", "2014IT16RFOP022", "2014LT16MAOP001", "2014LU05SFOP001", 
+            "2014LU16RFOP001", "2014LV16MAOP001", "2014MT05SFOP001", "2014MT16M1OP001", "2014NL05SFOP001", "2014NL16RFOP001", "2014NL16RFOP002", "2014NL16RFOP003", "2014NL16RFOP004", "2014PL05M9OP001", 
+            "2014PL16M1OP001", "2014PL16M2OP001", "2014PL16M2OP002", "2014PL16M2OP003", "2014PL16M2OP004", "2014PL16M2OP005", "2014PL16M2OP006", "2014PL16M2OP007", "2014PL16M2OP008", "2014PL16M2OP009", 
+            "2014PL16M2OP010", "2014PL16M2OP011", "2014PL16M2OP012", "2014PL16M2OP013", "2014PL16M2OP014", "2014PL16M2OP015", "2014PL16M2OP016", "2014PL16RFOP001", "2014PL16RFOP002", "2014PL16RFOP003", 
+            "2014PT05M9OP001", "2014PT05SFOP001", "2014PT16CFOP001", "2014PT16M2OP001", "2014PT16M2OP002", "2014PT16M2OP003", "2014PT16M2OP004", "2014PT16M2OP005", "2014PT16M2OP006", "2014PT16M2OP007", 
+            "2014PT16M3OP001", "2014RO05M9OP001", "2014RO05SFOP001", "2014RO16M1OP001", "2014RO16RFOP001", "2014RO16RFOP002", "2014SE05M9OP001", "2014SE16M2OP001", "2014TC16RFCB049", "2014TC16RFCB050", 
+            "2014TC16RFCB051", "2014TC16RFCB052", "2014TC16RFCB053", "2014TC16RFCB054", "2014TC16RFCB055", "2014TC16RFCB056", "2014TC16RFIR001", "2014TC16RFIR002", "2014TC16RFIR003", "2014TC16RFIR004", 
+            "2014TC16RFPC001", "2014TC16RFTN001", "2014TC16RFTN002", "2014TC16RFTN003", "2014TC16RFTN004", "2014TC16RFTN005", "2014TC16RFTN006", "2014TC16RFTN007", "2014TC16RFTN008", "2014TC16RFTN009", 
+            "2014TC16RFTN010", "2014UK05M9OP001", "2014UK05M9OP002", "2014UK05SFOP001", "2014UK05SFOP002", "2014UK05SFOP004", "2014UK05SFOP005", "2014UK16RFOP001", "2014UK16RFOP002", "2014UK16RFOP003", 
+            "2014UK16RFOP004", "2014UK16RFOP005", "2014UK16RFOP006", "2014IT14MFOP001", "2014PL16CFTA001", "2014SE16RFOP001", "2014SE16RFOP002", "2014SE16RFOP003", "2014SE16RFOP004", "2014SE16RFOP005", 
+            "2014SE16RFOP006", "2014SE16RFOP007", "2014SE16RFOP008", "2014SE16RFOP009", "2014SI16MAOP001", "2014SK05M0OP001", "2014SK05SFOP001", "2014SK16M1OP001", "2014SK16M1OP002", "2014SK16RFOP001", 
+            "2014SK16RFOP002", "2014TC16I5CB001", "2014TC16I5CB002", "2014TC16I5CB003", "2014TC16I5CB004", "2014TC16I5CB005", "2014TC16I5CB006", "2014TC16I5CB007", "2014TC16I5CB008", "2014TC16I5CB009", 
+            "2014TC16I5CB010", "2014TC16M4TN001", "2014TC16M4TN002", "2014TC16M4TN003", "2014TC16M5TN001", "2014TC16M6TN001", "2014TC16RFCB001", "2014TC16RFCB002", "2014TC16RFCB003", "2014TC16RFCB004", 
+            "2014TC16RFCB005", "2014TC16RFCB006", "2014TC16RFCB007", "2014TC16RFCB008", "2014TC16RFCB009", "2014TC16RFCB010", "2014TC16RFCB011", "2014TC16RFCB012", "2014TC16RFCB013", "2014TC16RFCB014", 
+            "2014TC16RFCB015", "2014TC16RFCB016", "2014TC16RFCB017", "2014TC16RFCB018", "2014TC16RFCB019", "2014TC16RFCB020", "2014TC16RFCB021", "2014TC16RFCB022", "2014TC16RFCB023", "2014TC16RFCB024", 
+            "2014TC16RFCB025", "2014TC16RFCB026", "2014TC16RFCB027", "2014TC16RFCB028", "2014TC16RFCB029", "2014TC16RFCB030", "2014TC16RFCB031", "2014TC16RFCB032", "2014TC16RFCB033", "2014TC16RFCB034", 
+            "2014TC16RFCB035", "2014TC16RFCB036", "2014TC16RFCB037", "2014TC16RFCB038", "2014TC16RFCB039", "2014TC16RFCB040", "2014TC16RFCB041", "2014TC16RFCB042", "2014TC16RFCB043", "2014TC16RFCB044", 
+            "2014TC16RFCB045", "2014TC16RFCB046", "2014TC16RFCB047", "2014TC16RFCB048"
+          ]
+      }
+    },
+    {
+      "name" : "Operation_Summary_English", 
+      "title" : "The operation summary expressed in English",
+      "type" : "string"
+    },
+    {
+      "name" : "Operation_Summary_Programme_Language", 
+      "title" : "The operation summary expressed in the programme language",
+      "type" : "string", 
+      "constraints" : {
+        "required": true
+      } 
+    },
+    {
+      "name" : "Programming_Period", 
+      "title" : "programming period",
+      "type" : "string",
+      "constraints" : {
+        "required": true,
+        "enum" : ["2014-2020", "2021-2027"] 
+      }
+    },
+    {
+      "name" : "Programme_Name", 
+      "title" : "programme name",
+      "description" : "a human readable version of the program name",
+      "type" : "string" 
+      },
+    {
+      "name" : "Program_Priority_Axis_Code", 
+      "title" : "program priority axis code",
+      "type" : "string" 
+    },
+    {
+      "name" : "Program_Priority_Axis_Name", 
+      "title" : "program priority axis name",
+      "type" : "string" 
+    },
+    {
+      "name" : "Program_Specific_Objective_Code", 
+      "title" : "program specific objective code",
+      "type" : "string"
+    },
+    {
+      "name" : "Program_Specific_Objective_Name", 
+      "title" : "program specific objective name",
+      "type" : "string"
+    },
+    {
+      "name" : "Program_Thematic_Objective_Code", 
+      "title" : "program thematic objective code",
+      "type" : "string"
+    },
+    {
+      "name" : "Program_Thematic_Objective_Name", 
+      "title" : "program thematic objective name",
+      "type" : "string"
+    },
+    {
+      "name" : "Fund_Name", 
+      "title" : "fund name",
+      "description" : "a human readable version of the fund name", 
+      "type" : "string" 
+    },
+    {
+      "name" : "Date_Of_Last_Update", 
+      "title" : "date of last update",
+      "type" : "date",
+      "format" : "%d/%m/%Y" 
+    },
+    {
+      "name" : "Beneficiary_Unique_Identifier", 
+      "title" : "beneficiary unique identifier",
+      "description" : "e.g. from national VAT registry",
+      "type" : "string" 
+    },
+    {
+      "name" : "Social_Media_Links", 
+      "title" : "social media links",
+      "description" : "URLs from Facebook, Twitter, YouTube, etc.",
+      "type" : "array"
+    } 
+  ]
+}
