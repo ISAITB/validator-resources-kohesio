@@ -275,8 +275,11 @@
     {
       "name" : "Social_Media_Links", 
       "title" : "social media links",
-      "description" : "URLs from Facebook, Twitter, YouTube, etc.",
-      "type" : "array"
+      "description" : "URLs from Facebook, Twitter, YouTube, etc. (separated by spaces)",
+      "type" : "string",
+      "constraints": {
+        "pattern": "(:?^(https?:\\/\\/)?([\\w\\-])+\\.{1}([a-zA-Z]{2,63})([\\/\\w-]*)*\\/?\\??([^#\\n\\r ]*)?#?([^\\n\\r ]*))(?:\\s+(https?:\\/\\/)?([\\w\\-])+\\.{1}([a-zA-Z]{2,63})([\\/\\w-]*)*\\/?\\??([^#\\n\\r ]*)?#?([^\\n\\r ]*))*"
+      }
     } 
   ]
 }
